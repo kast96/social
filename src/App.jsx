@@ -17,10 +17,10 @@ const App = (props) => {
 						<div className="main-content">
 							<Switch>
 								<Route path="/dialogs/">
-									<Dialogs dialogs={props.dialogs} messages={props.messages} />
+									<Dialogs state={props.state.dialogsPage} />
 								</Route>
 								<Route path="/profile/">
-									<Profile posts={props.posts} />
+									<Profile state={props.state.profilePage} />
 								</Route>
 							</Switch>
 						</div>
