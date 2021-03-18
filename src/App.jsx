@@ -6,7 +6,7 @@ import Profile from './components/Profile/Profile.jsx';
 import Dialogs from './components/Dialogs/Dialogs.jsx';
 import './App.scss';
 
-const App = () => {
+const App = (props) => {
 	return (
 		<BrowserRouter>
 			<div className="app">
@@ -17,10 +17,10 @@ const App = () => {
 						<div className="main-content">
 							<Switch>
 								<Route path="/dialogs/">
-									<Dialogs />
+									<Dialogs dialogs={props.dialogs} messages={props.messages} />
 								</Route>
 								<Route path="/profile/">
-									<Profile />
+									<Profile posts={props.posts} />
 								</Route>
 							</Switch>
 						</div>

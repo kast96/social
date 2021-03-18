@@ -1,18 +1,17 @@
 import DialogItem from './DialogsItem/DialogsItem.jsx';
 import Message from './Message/Message.jsx';
 
-const Dialogs = () => {
+const Dialogs = (props) => {
+  let dialogsElements = props.dialogs.map((el) => <DialogItem key={el.id} id={el.id} name={el.name} />);
+  let messagesElements = props.messages.map((el) => <Message key={el.id} message={el.message} />);
+
   return (
     <div className="dialogs">
       <div className="dialogs__items">
-        <DialogItem id="1" name="Dialog 1" />
-        <DialogItem id="2" name="Dialog 2" />
-        <DialogItem id="3" name="Dialog 3" />
+        {dialogsElements}
       </div>
       <div className="dialogs__messages">
-        <Message message="Message 1" />
-        <Message message="Message 2" />
-        <Message message="Message 3" />
+        {messagesElements}
       </div>
     </div>
   );

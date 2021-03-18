@@ -1,11 +1,11 @@
 import Posts from './Posts/Posts.jsx';
 import ProfileInfo from './ProfileInfo/ProfileInfo.jsx';
 
-const Profile = () => {
+const Profile = (props) => {
   return (
     <div className="profile">
       <ProfileInfo />
-      <Posts />
+      <Posts posts={props.posts} />
     </div>
   );
 }
