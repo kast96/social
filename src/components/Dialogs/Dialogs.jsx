@@ -1,5 +1,6 @@
 import DialogItem from './DialogsItem/DialogsItem.jsx';
 import Message from './Message/Message.jsx';
+import NewMessage from './NewMessage/NewMessage.jsx';
 
 const Dialogs = (props) => {
   let dialogsElements = props.state.dialogs.map((el) => <DialogItem key={el.id} id={el.id} name={el.name} />);
@@ -12,6 +13,7 @@ const Dialogs = (props) => {
       </div>
       <div className="dialogs__messages">
         {messagesElements}
+        <NewMessage />
       </div>
     </div>
   );
