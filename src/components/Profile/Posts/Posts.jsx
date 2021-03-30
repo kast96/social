@@ -1,13 +1,14 @@
-import NewPost from './NewPost/NewPost.jsx';
+import NewPostContainer from './NewPost/NewPostContainer.jsx';
 import Post from './Post/Post.jsx';
 
 const Posts = (props) => {
-  let postsElements = props.posts.map((el) => <Post key={el.id} message={el.message} />);
+  let state = props.store.getState().profilePage;
+  let postsElements = state.posts.map((el) => <Post key={el.id} message={el.message} />);
 
   return (
     <div className="posts">
       <div className="posts__new-post">
-        <NewPost newPostText={props.newPostText} dispatch={props.dispatch} />
+        <NewPostContainer store={props.store} />
       </div>
       <div className="posts__posts">
         {postsElements}

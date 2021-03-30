@@ -1,10 +1,11 @@
 import DialogItem from './DialogsItem/DialogsItem.jsx';
 import Message from './Message/Message.jsx';
-import NewMessage from './NewMessage/NewMessage.jsx';
+import NewMessageContainer from './NewMessage/NewMessageContainer.jsx';
 
 const Dialogs = (props) => {
-  let dialogsElements = props.state.dialogs.map((el) => <DialogItem key={el.id} id={el.id} name={el.name} />);
-  let messagesElements = props.state.messages.map((el) => <Message key={el.id} message={el.message} />);
+  let state = props.store.getState().dialogsPage;
+  let dialogsElements = state.dialogs.map((el) => <DialogItem key={el.id} id={el.id} name={el.name} />);
+  let messagesElements = state.messages.map((el) => <Message key={el.id} message={el.message} />);
 
   return (
     <div className="dialogs">
@@ -13,7 +14,7 @@ const Dialogs = (props) => {
       </div>
       <div className="dialogs__messages">
         {messagesElements}
-        <NewMessage newMessageText={props.state.newMessageText} dispatch={props.dispatch} />
+        <NewMessageContainer store={props.store} />
       </div>
     </div>
   );
