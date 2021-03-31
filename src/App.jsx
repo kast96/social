@@ -2,8 +2,8 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Header from './components/Header/Header.jsx';
 import Footer from './components/Footer/Footer.jsx';
 import NavBar from './components/NavBar/NavBar.jsx';
+import DialogsContainer from './components/Dialogs/DialogsContainer.jsx';
 import Profile from './components/Profile/Profile.jsx';
-import Dialogs from './components/Dialogs/Dialogs.jsx';
 import './App.scss';
 
 const App = (props) => {
@@ -17,10 +17,10 @@ const App = (props) => {
 						<div className="main-content">
 							<Switch>
 								<Route path="/dialogs/">
-									<Dialogs store={props.store} />
+									<DialogsContainer />
 								</Route>
 								<Route path="/profile/">
-									<Profile store={props.store} />
+									<Profile />
 								</Route>
 							</Switch>
 						</div>
