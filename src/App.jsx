@@ -4,6 +4,7 @@ import Footer from './components/Footer/Footer.jsx';
 import NavBar from './components/NavBar/NavBar.jsx';
 import DialogsContainer from './components/Dialogs/DialogsContainer.jsx';
 import Profile from './components/Profile/Profile.jsx';
+import UsersContainer from './components/Users/UsersContainer.jsx';
 import './App.scss';
 
 const App = (props) => {
@@ -21,6 +22,9 @@ const App = (props) => {
 								</Route>
 								<Route path="/profile/">
 									<Profile />
+								</Route>
+								<Route path="/users/">
+									<UsersContainer />
 								</Route>
 							</Switch>
 						</div>
