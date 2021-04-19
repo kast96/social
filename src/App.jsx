@@ -3,7 +3,7 @@ import Header from './components/Header/Header.jsx';
 import Footer from './components/Footer/Footer.jsx';
 import NavBar from './components/NavBar/NavBar.jsx';
 import DialogsContainer from './components/Dialogs/DialogsContainer.jsx';
-import Profile from './components/Profile/Profile.jsx';
+import ProfileContainer from './components/Profile/ProfileContainer.jsx';
 import UsersContainer from './components/Users/UsersContainer.jsx';
 import './App.scss';
 
@@ -21,7 +21,7 @@ const App = () => {
 									<DialogsContainer />
 								</Route>
 								<Route path="/profile/">
-									<Profile />
+									<ProfileContainer />
 								</Route>
 								<Route path="/users/">
 									<UsersContainer />
