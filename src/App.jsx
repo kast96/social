@@ -7,7 +7,7 @@ import Profile from './components/Profile/Profile.jsx';
 import UsersContainer from './components/Users/UsersContainer.jsx';
 import './App.scss';
 
-const App = (props) => {
+const App = () => {
 	return (
 		<BrowserRouter>
 			<div className="app">
