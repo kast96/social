@@ -10,6 +10,9 @@ const NavBar = () => {
           <li>
             <NavLink to="/dialogs/">Сообщения</NavLink>
           </li>
+          <li>
+            <NavLink to="/users/">Пользователи</NavLink>
+          </li>
         </ul>
     </nav>
   );
