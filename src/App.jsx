@@ -1,5 +1,5 @@
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import Header from './components/Header/Header.jsx';
+import HeaderContainer from './components/Header/HeaderContainer.jsx';
 import Footer from './components/Footer/Footer.jsx';
 import NavBar from './components/NavBar/NavBar.jsx';
 import DialogsContainer from './components/Dialogs/DialogsContainer.jsx';
@@ -12,7 +12,7 @@ const App = () => {
 		<BrowserRouter>
 			<div className="app">
 				<div className="container">
-					<Header />
+					<HeaderContainer />
 					<div className="content">
 						<NavBar />
 						<div className="main-content">
