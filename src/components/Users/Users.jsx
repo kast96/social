@@ -10,6 +10,7 @@ let Users = (props) => {
 	}
 
 	let onClickUnfollow = (userId) => {
+		props.toggleFollowingProgress(true, userId);
 		axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {
 			withCredentials: true,
 			headers: {
@@ -19,10 +20,12 @@ let Users = (props) => {
 			if(response.data.resultCode === 0) {
 				props.unfollow(userId);
 			}
+			props.toggleFollowingProgress(false, userId);
 		});
 	}
 
 	let onClickFollow = (userId) => {
+		props.toggleFollowingProgress(true, userId);
 		axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {}, {
 			withCredentials: true,
 			headers: {
@@ -32,6 +35,7 @@ let Users = (props) => {
 			if(response.data.resultCode === 0) {
 				props.follow(userId);
 			}
+			props.toggleFollowingProgress(false, userId);
 		});
 	}
 	
@@ -54,8 +58,8 @@ let Users = (props) => {
 							<div className="user__subscribe">
 								{
 									(user.followed) 
-										? <button onClick={() => {onClickUnfollow(user.id)}}>Unfollow</button>
-										: <button onClick={() => {onClickFollow(user.id)}}>Follow</button>
+										? <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {onClickUnfollow(user.id)}}>Unfollow</button>
+										: <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {onClickFollow(user.id)}}>Follow</button>
 								}
 							</div>
 						</div>
