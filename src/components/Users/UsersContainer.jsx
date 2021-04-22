@@ -1,32 +1,18 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import Users from './Users.jsx';
-import { follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching, toggleFollowingProgress } from '../../redux/users-reducer.js';
+import { follow, unfollow, setCurrentPage, getUsers } from '../../redux/users-reducer.js';
 import Preloader from './../common/Preloader/Preloader.jsx';
 
 class UsersContainer extends React.Component {
   componentDidMount() {
-    this.props.toggleIsFetching(true);
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currnetPage}&count=${this.props.pageSize}`, {
-      withCredentials: true
-    }).then(response => {
-      this.props.toggleIsFetching(false);
-      this.props.setUsers(response.data.items);
-      this.props.setTotalUsersCount(response.data.totalCount);
-    });
+    this.props.getUsers(this.props.currnetPage, this.props.pageSize);
   }
 
-  onPageChanged = (page) => {
-    this.props.toggleIsFetching(true);
-    this.props.setCurrentPage(page);
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`, {
-      withCredentials: true
-    }).then(response => {
-      this.props.toggleIsFetching(false);
-      this.props.setUsers(response.data.items);
-    });
+  onPageChanged = (pageNubmer) => {
+    this.props.getUsers(pageNubmer, this.props.pageSize);
+    this.props.setCurrentPage(pageNubmer);
   }
 
   render() {
@@ -42,7 +28,6 @@ class UsersContainer extends React.Component {
         follow={this.props.follow}
         unfollow={this.props.unfollow}
         followingInProgress={this.props.followingInProgress}
-        toggleFollowingProgress={this.props.toggleFollowingProgress}
       />
       </>
     )
@@ -61,4 +46,4 @@ let mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps,
-  {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching, toggleFollowingProgress})(UsersContainer);
+  {follow, unfollow, setCurrentPage, getUsers})(UsersContainer);

@@ -1,6 +1,5 @@
 import userPhoto from "../../assets/images/user.png";
 import {NavLink} from 'react-router-dom';
-import axios from 'axios';
 
 let Users = (props) => {
 	let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -10,35 +9,12 @@ let Users = (props) => {
 	}
 
 	let onClickUnfollow = (userId) => {
-		props.toggleFollowingProgress(true, userId);
-		axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {
-			withCredentials: true,
-			headers: {
-				'API-KEY': '4ce4c13d-3edb-4132-88d7-829e1edef69e'
-			}
-		}).then(response => {
-			if(response.data.resultCode === 0) {
-				props.unfollow(userId);
-			}
-			props.toggleFollowingProgress(false, userId);
-		});
+		props.unfollow(userId);
 	}
 
 	let onClickFollow = (userId) => {
-		props.toggleFollowingProgress(true, userId);
-		axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {}, {
-			withCredentials: true,
-			headers: {
-				'API-KEY': '4ce4c13d-3edb-4132-88d7-829e1edef69e'
-			}
-		}).then(response => {
-			if(response.data.resultCode === 0) {
-				props.follow(userId);
-			}
-			props.toggleFollowingProgress(false, userId);
-		});
+		props.follow(userId);
 	}
-	
 	return (
 		<div className="users">
 			{
