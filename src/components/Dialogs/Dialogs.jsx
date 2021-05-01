@@ -1,4 +1,3 @@
-import { Redirect } from 'react-router';
 import DialogItem from './DialogsItem/DialogsItem.jsx';
 import Message from './Message/Message.jsx';
 import NewMessageContainer from './NewMessage/NewMessageContainer.jsx';
@@ -6,12 +5,6 @@ import NewMessageContainer from './NewMessage/NewMessageContainer.jsx';
 const Dialogs = (props) => {
   let dialogsElements = props.dialogs.map((el) => <DialogItem key={el.id} id={el.id} name={el.name} />);
   let messagesElements = props.messages.map((el) => <Message key={el.id} message={el.message} />);
-
-  if(!props.isAuth) {
-    return (
-      <Redirect to="/login/" />
-    );
-  }
 
   return (
     <div className="dialogs">
