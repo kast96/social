@@ -1,5 +1,6 @@
 
 import React from 'react';
+import NewMessageReduxForm from './NewMessageForm';
 
 const NewMessage = (props) => {
   let newMessageElement = React.createRef();
@@ -13,10 +14,13 @@ const NewMessage = (props) => {
     props.updateNewMessageText(text);
   };
 
+  const addNewMessage = (formData) => {
+    props.addMessage(formData.newMessage);
+  }
+
   return (
     <div className="new-message">
-      <textarea ref={newMessageElement} className="new-message__input" name="new-message" onChange={onPostChange} value={props.newMessageText} />
-      <button className="btn new-message__btn" onClick={onAddMessage}>Отправить</button>
+      <NewMessageReduxForm onSubmit={addNewMessage} />
     </div>
   );
 }
