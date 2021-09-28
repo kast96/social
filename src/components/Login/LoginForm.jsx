@@ -1,26 +1,28 @@
-import { reduxForm, Field } from "redux-form";
+import { Form, Field } from "react-final-form";
+import { Input } from "../common/FormsControls/FormsControls";
+import { composeValidators, required } from "../../utils/validators/validators";
 
 const LoginForm = (props) => {
     return (
-        <form onSubmit={props.handleSubmit}>
-            <div>
-                <Field component={'input'} name={'Login'} placeholder={'Login'} />
-            </div>
-            <div>
-                <Field component={'input'} name={'Password'} type={'password'} placeholder={'Password'} />
-            </div>
-            <div>
-                <Field component={'input'} name={'RememberMe'} type={'checkbox'} />Remember me
-            </div>
-            <div>
-                <button>Login</button>
-            </div>
-        </form>
+        <Form onSubmit={props.onSubmit}>
+            {({ handleSubmit }) => (
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <Field component={Input} name={'Login'} placeholder={'Login'} validate={composeValidators(required)} />
+                    </div>
+                    <div>
+                        <Field component={Input} name={'Password'} type={'password'} placeholder={'Password'} validate={composeValidators(required)} />
+                    </div>
+                    <div>
+                        <Field component={Input} name={'RememberMe'} type={'checkbox'} />Remember me
+                    </div>
+                    <div>
+                        <button>Login</button>
+                    </div>
+                </form>
+            )}
+        </Form>  
     )
 }
 
-const LoginReduxForm = reduxForm({
-    form: 'login'
-})(LoginForm);
-
-export default LoginReduxForm;
+export default LoginForm;
