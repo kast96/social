@@ -1,22 +1,15 @@
 
 import React from 'react';
+import NewPostReduxForm from './NewPostForm';
 
 const NewPost = (props) => {
-  let newPostElement = React.createRef();
-
-  let onAddPost = () => {
-    props.addPost();
-  }
-
-  let onPostChange = () => {
-    let text = newPostElement.current.value;
-    props.updateNewPostText(text);
+  const addNewPost = (formData) => {
+    props.addPost(formData.newPost);
   }
 
   return (
     <div className="new-post">
-      <textarea ref={newPostElement} className="new-post__input" name="new-post" onChange={onPostChange} value={props.newPostText} />
-      <button className="btn new-post__btn" onClick={onAddPost}>Отправить</button>
+      <NewPostReduxForm onSubmit={addNewPost} />
     </div>
   );
 }
