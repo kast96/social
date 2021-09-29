@@ -8,13 +8,13 @@ const LoginForm = (props) => {
             {({ handleSubmit }) => (
                 <form onSubmit={handleSubmit}>
                     <div>
-                        <Field component={Input} name={'Login'} placeholder={'Login'} validate={composeValidators(required)} />
+                        <Field component={Input} name={'email'} placeholder={'Email'} validate={composeValidators(required)} />
                     </div>
                     <div>
-                        <Field component={Input} name={'Password'} type={'password'} placeholder={'Password'} validate={composeValidators(required)} />
+                        <Field component={Input} name={'password'} type={'password'} placeholder={'Password'} validate={composeValidators(required)} />
                     </div>
                     <div>
-                        <Field component={Input} name={'RememberMe'} type={'checkbox'} />Remember me
+                        <Field component={Input} name={'rememberMe'} type={'checkbox'} />Remember me
                     </div>
                     <div>
                         <button>Login</button>

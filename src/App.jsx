@@ -5,7 +5,7 @@ import NavBar from './components/NavBar/NavBar.jsx';
 import DialogsContainer from './components/Dialogs/DialogsContainer.jsx';
 import ProfileContainer from './components/Profile/ProfileContainer.jsx';
 import UsersContainer from './components/Users/UsersContainer.jsx';
-import Login from './components/Login/Login.jsx';
+import LoginContainer from './components/Login/LoginContainer.jsx';
 import './App.scss';
 
 const App = () => {
@@ -28,7 +28,7 @@ const App = () => {
 									<UsersContainer />
 								</Route>
 								<Route path="/login/">
-									<Login />
+									<LoginContainer />
 								</Route>
 							</Switch>
 						</div>
