@@ -1,6 +1,6 @@
 
 import React from 'react';
-import NewPostForm from './NewPostForm';
+import NewPostReduxForm from './NewPostForm';
 
 const NewPost = (props) => {
   const addNewPost = (formData) => {
@@ -9,7 +9,7 @@ const NewPost = (props) => {
 
   return (
     <div className="new-post">
-      <NewPostForm onSubmit={addNewPost} />
+      <NewPostReduxForm onSubmit={addNewPost} />
     </div>
   );
 }

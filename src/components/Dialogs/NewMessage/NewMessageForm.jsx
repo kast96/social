@@ -1,23 +1,25 @@
-import { Form, Field } from "react-final-form";
+import { reduxForm, Field } from "redux-form";
 import { Textarea } from "../../common/FormsControls/FormsControls";
-import { composeValidators, required, maxLenghtCreator } from "../../../utils/validators/validators";
+import { required, maxLenghtCreator } from "../../../utils/validators/validators";
+
+const maxLenght100 = maxLenghtCreator(100);
 
 const NewMessageForm = (props) => {
     return (
-        <Form onSubmit={props.onSubmit}>
-            {({ handleSubmit }) => (
-                <form onSubmit={handleSubmit}>
-                    <div>
-                        <Field component={Textarea} name={'newMessage'} placeholder={'Enter your message'} validate={composeValidators(required, maxLenghtCreator(100))} />
-                    </div>
+        <form onSubmit={props.handleSubmit}>
+            <div>
+                <Field component={Textarea} name={'newMessage'} placeholder={'Enter your message'} validate={[required, maxLenght100]} />
+            </div>
 
-                    <div>
-                        <button className="btn new-message__btn">Отправить</button>
-                    </div>
-                </form>
-            )}
-        </Form>  
+            <div>
+                <button className="btn new-message__btn">Отправить</button>
+            </div>
+        </form>
     )
 }
 
-export default NewMessageForm;
+const NewMessageReduxForm = reduxForm({
+    form: 'dialogsNewMessage'
+})(NewMessageForm);
+
+export default NewMessageReduxForm;

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import NewMessageForm from './NewMessageForm';
+import NewMessageReduxForm from './NewMessageForm';
 
 const NewMessage = (props) => {
   const addNewMessage = (formData) => {
@@ -9,7 +9,7 @@ const NewMessage = (props) => {
 
   return (
     <div className="new-message">
-      <NewMessageForm onSubmit={addNewMessage} />
+      <NewMessageReduxForm onSubmit={addNewMessage} />
     </div>
   );
 }
