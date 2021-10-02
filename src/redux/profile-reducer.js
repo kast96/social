@@ -51,12 +51,14 @@ export const setStatus = (status) => {
 }
 
 export const getUserProfile = (userId) => (dispatch) => {
+    if (!userId) return;
 	profileAPI.getProfile(userId).then(response => {
         dispatch(setUserProfile(response.data));
     });
 }
 
 export const getStatus = (userId) => (dispatch) => {
+    if (!userId) return;
 	profileAPI.getStatus(userId).then(response => {
         dispatch(setStatus(response.data));
     });
