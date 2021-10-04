@@ -1,9 +1,9 @@
+import React from 'react';
 import NewPostContainer from './NewPost/NewPostContainer.jsx';
 import Post from './Post/Post.jsx';
 
-const Posts = (props) => {
+const Posts = React.memo((props) => {
   let postsElements = props.posts.map((el) => <Post key={el.id} message={el.message} />);
-
   return (
     <div className="posts">
       <div className="posts__new-post">
@@ -14,6 +14,6 @@ const Posts = (props) => {
       </div>
     </div>
   );
-}
+});
 
 export default Posts;
