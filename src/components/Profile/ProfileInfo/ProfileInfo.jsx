@@ -1,18 +1,17 @@
 import Preloader from "../../common/Preloader/Preloader";
-import userPhoto from "../../../assets/images/user.png";
-import ProfileStatus from "./ProfileStatus";
+import UserPhoto from "../../common/UserPhoto/UserPhoto.jsx";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
-const ProfileInfo = (props) => {
-  if (!props.profile) {
+const ProfileInfo = ({profile, status, updateStatus}) => {
+  if (!profile) {
     return <Preloader />
   } else {
     return (
       <div className="profile-info">
         <div className="profile__avatar">
-          <img src={(props.profile.photos.large != null) ? props.profile.photos.large : userPhoto} alt=""/>
+          <UserPhoto photo={profile.photos.large} />
         </div>
-        <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} />
+        <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
         <div className="profile__description">description</div>
       </div>
     );

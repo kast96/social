@@ -9,11 +9,13 @@ import { getStateUsers, getStatePageSize, getStateTotalUsersCount, getStateCurre
 
 class UsersContainer extends React.Component {
   componentDidMount() {
-    this.props.getUsers(this.props.currnetPage, this.props.pageSize);
+    const {currnetPage, pageSize} = this.props;
+    this.props.getUsers(currnetPage, pageSize);
   }
 
   onPageChanged = (pageNubmer) => {
-    this.props.getUsers(pageNubmer, this.props.pageSize);
+    const {pageSize} = this.props;
+    this.props.getUsers(pageNubmer, pageSize);
     this.props.setCurrentPage(pageNubmer);
   }
 
