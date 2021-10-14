@@ -11,6 +11,8 @@ import UsersContainer from './components/Users/UsersContainer.jsx';
 import LoginContainer from './components/Login/LoginContainer.jsx';
 import './App.scss';
 import Preloader from './components/common/Preloader/Preloader.jsx';
+import store from './redux/redux-store.js';
+import {Provider} from 'react-redux';
 
 class App extends React.Component {
 	componentDidMount() {
@@ -57,4 +59,16 @@ const mapStateToProps = (state) => ({
 	initialized: state.app.initialized
 });
 
-export default connect(mapStateToProps, {initializeApp})(App);
+const AppContainer = connect(mapStateToProps, {initializeApp})(App);
+
+const SocialApp = (props) => {
+	return (
+		<React.StrictMode>
+			<Provider store={store}>
+				<AppContainer />
+			</Provider>
+		</React.StrictMode>
+	);
+}
+
+export default SocialApp;

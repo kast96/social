@@ -2,18 +2,9 @@ import reportWebVitals from './reportWebVitals';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
-import App from './App.jsx';
-import store from './redux/redux-store.js';
-import {Provider} from 'react-redux';
+import SocialApp from './App.jsx';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+ReactDOM.render(<SocialApp />, document.getElementById('root'));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
