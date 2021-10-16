@@ -5,14 +5,16 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import HeaderContainer from './components/Header/HeaderContainer.jsx';
 import Footer from './components/Footer/Footer.jsx';
 import NavBar from './components/NavBar/NavBar.jsx';
-import DialogsContainer from './components/Dialogs/DialogsContainer.jsx';
-import ProfileContainer from './components/Profile/ProfileContainer.jsx';
-import UsersContainer from './components/Users/UsersContainer.jsx';
-import LoginContainer from './components/Login/LoginContainer.jsx';
 import './App.scss';
 import Preloader from './components/common/Preloader/Preloader.jsx';
 import store from './redux/redux-store.js';
 import {Provider} from 'react-redux';
+import { withSuspense } from './hoc/withSuspense.jsx';
+
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer.jsx'));
+const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer.jsx'));
+const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer.jsx'));
+const LoginContainer = React.lazy(() => import('./components/Login/LoginContainer.jsx'));
 
 class App extends React.Component {
 	componentDidMount() {
@@ -33,16 +35,16 @@ class App extends React.Component {
 							<div className="main-content">
 								<Switch>
 									<Route path="/dialogs/">
-										<DialogsContainer />
+										{withSuspense(DialogsContainer)}
 									</Route>
 									<Route path="/profile/:userId?">
-										<ProfileContainer />
+										{withSuspense(ProfileContainer)}
 									</Route>
 									<Route path="/users/">
-										<UsersContainer />
+										{withSuspense(UsersContainer)}
 									</Route>
 									<Route path="/login/">
-										<LoginContainer />
+										{withSuspense(LoginContainer)}
 									</Route>
 								</Switch>
 							</div>
