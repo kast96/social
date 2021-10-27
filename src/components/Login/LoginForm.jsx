@@ -3,7 +3,7 @@ import { Input } from "../common/FormsControls/FormsControls";
 import { required } from "../../utils/validators/validators";
 import styles from '../common/FormsControls/FormsControls.module.scss';
 
-const LoginForm = ({handleSubmit, error}) => {
+const LoginForm = ({handleSubmit, error, captchaUrl}) => {
     return (
         <form onSubmit={handleSubmit}>
             <div>
@@ -15,6 +15,12 @@ const LoginForm = ({handleSubmit, error}) => {
             <div>
                 <Field component={Input} name={'rememberMe'} type={'checkbox'} />Remember me
             </div>
+            {captchaUrl && 
+                <img src={captchaUrl} alt={'Captcha'} />
+            }
+            {captchaUrl && 
+                <Field component={Input} name={'captcha'} placeholder={'Symbols from captcha'} validate={[required]} />
+            }
             {error &&
                 <div className={styles.formSummaryError}>
                     {error}

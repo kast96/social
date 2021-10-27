@@ -5,14 +5,15 @@ import { connect } from 'react-redux';
 
 let mapStateToProps = (state) => {
   return {
-    isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth,
+    captchaUrl: state.auth.captchaUrl
   }
 }
 
 let mapDispatchToProps = (dispatch) => {
   return {
-    login: (email, password, rememberMe) => {
-      dispatch(login(email, password, rememberMe));
+    login: (email, password, rememberMe, captcha) => {
+      dispatch(login(email, password, rememberMe, captcha));
     }
   }
 }
