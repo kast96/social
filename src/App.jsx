@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { initializeApp } from "./redux/app-reducer.js";
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import HeaderContainer from './components/Header/HeaderContainer.jsx';
 import Footer from './components/Footer/Footer.jsx';
 import NavBar from './components/NavBar/NavBar.jsx';
@@ -17,8 +17,17 @@ const UsersContainer = React.lazy(() => import('./components/Users/UsersContaine
 const LoginContainer = React.lazy(() => import('./components/Login/LoginContainer.jsx'));
 
 class App extends React.Component {
+	catchAllUnhanledError = (reason, promise) => {
+		alert('Неизвестная ошибка');
+	}
+
 	componentDidMount() {
 		this.props.initializeApp();
+		window.addEventListener('unhandledrejection', this.catchAllUnhanledError);
+	}
+
+	componentWillUnmount() {
+		window.removeEventListener('unhandledrejection', this.catchAllUnhanledError);
 	}
 
 	render() {
@@ -34,6 +43,9 @@ class App extends React.Component {
 							<NavBar />
 							<div className="main-content">
 								<Switch>
+									<Route exact path="/">
+										{<Redirect to={'/profile'} />}
+									</Route>
 									<Route path="/dialogs/">
 										{withSuspense(DialogsContainer)}
 									</Route>
@@ -45,6 +57,9 @@ class App extends React.Component {
 									</Route>
 									<Route path="/login/">
 										{withSuspense(LoginContainer)}
+									</Route>
+									<Route path="*">
+										<div>404</div>
 									</Route>
 								</Switch>
 							</div>
