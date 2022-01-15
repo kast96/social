@@ -1,4 +1,4 @@
-import UserPhoto from "../common/UserPhoto/UserPhoto.jsx";
+import UserPhoto from "../common/UserPhoto/UserPhoto";
 import {NavLink} from 'react-router-dom';
 
 let User = ({user, followingInProgress, follow, unfollow}) => {

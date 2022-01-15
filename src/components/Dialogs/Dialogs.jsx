@@ -1,6 +1,6 @@
-import DialogItem from './DialogsItem/DialogsItem.jsx';
-import Message from './Message/Message.jsx';
-import NewMessageContainer from './NewMessage/NewMessageContainer.jsx';
+import DialogItem from './DialogsItem/DialogsItem';
+import Message from './Message/Message';
+import NewMessageContainer from './NewMessage/NewMessageContainer';
 
 const Dialogs = (props) => {
   let dialogsElements = props.dialogs.map((el) => <DialogItem key={el.id} id={el.id} name={el.name} />);

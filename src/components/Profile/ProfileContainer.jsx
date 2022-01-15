@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Profile from './Profile.jsx';
-import { getUserProfile, getStatus, updateStatus, savePhoto, saveProfile } from './../../redux/profile-reducer.js';
+import Profile from './Profile';
+import { getUserProfile, getStatus, updateStatus, savePhoto, saveProfile } from './../../redux/profile-reducer';
 import { withRouter } from 'react-router';
 import { compose } from 'redux';
 

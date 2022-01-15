@@ -1,5 +1,5 @@
-import PostsContainer from './Posts/PostsContainer.jsx';
-import ProfileInfo from './ProfileInfo/ProfileInfo.jsx';
+import PostsContainer from './Posts/PostsContainer';
+import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 const Profile = (props) => {
   return (

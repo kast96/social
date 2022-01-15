@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Preloader from "../../common/Preloader/Preloader";
-import UserPhoto from "../../common/UserPhoto/UserPhoto.jsx";
+import UserPhoto from "../../common/UserPhoto/UserPhoto";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import ProfileDataForm from './ProfileDataForm';
 

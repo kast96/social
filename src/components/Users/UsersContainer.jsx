@@ -1,11 +1,11 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import Users from './Users.jsx';
-import { follow, unfollow, setCurrentPage, getUsers } from '../../redux/users-reducer.js';
-import Preloader from './../common/Preloader/Preloader.jsx';
+import Users from './Users';
+import { follow, unfollow, setCurrentPage, getUsers } from '../../redux/users-reducer';
+import Preloader from './../common/Preloader/Preloader';
 import { compose } from 'redux';
-import { getStateUsers, getStatePageSize, getStateTotalUsersCount, getStateCurrentPage, getStateIsFetching, getStateFollowingInProgress } from '../../redux/users-selectors.js';
+import { getStateUsers, getStatePageSize, getStateTotalUsersCount, getStateCurrentPage, getStateIsFetching, getStateFollowingInProgress } from '../../redux/users-selectors';
 
 class UsersContainer extends React.Component {
   componentDidMount() {

@@ -1,20 +1,20 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { initializeApp } from "./redux/app-reducer.js";
+import { initializeApp } from "./redux/app-reducer";
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
-import HeaderContainer from './components/Header/HeaderContainer.jsx';
-import Footer from './components/Footer/Footer.jsx';
-import NavBar from './components/NavBar/NavBar.jsx';
+import HeaderContainer from './components/Header/HeaderContainer';
+import Footer from './components/Footer/Footer';
+import NavBar from './components/NavBar/NavBar';
 import './App.scss';
-import Preloader from './components/common/Preloader/Preloader.jsx';
-import store from './redux/redux-store.js';
+import Preloader from './components/common/Preloader/Preloader';
+import store from './redux/redux-store';
 import {Provider} from 'react-redux';
-import { withSuspense } from './hoc/withSuspense.jsx';
+import { withSuspense } from './hoc/withSuspense';
 
-const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer.jsx'));
-const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer.jsx'));
-const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer.jsx'));
-const LoginContainer = React.lazy(() => import('./components/Login/LoginContainer.jsx'));
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
+const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
+const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
+const LoginContainer = React.lazy(() => import('./components/Login/LoginContainer'));
 
 class App extends React.Component {
 	catchAllUnhanledError = (reason, promise) => {

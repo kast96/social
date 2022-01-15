@@ -1,6 +1,6 @@
 
-import NewMessage from './NewMessage.jsx';
-import {addMessageActionCreator} from '../../../redux/dialogs-reducer.js';
+import NewMessage from './NewMessage';
+import {addMessageActionCreator} from '../../../redux/dialogs-reducer';
 import { connect } from 'react-redux';
 
 let mapStateToProps = (state) => {

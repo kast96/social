@@ -1,6 +1,6 @@
 import React from 'react';
-import NewPostContainer from './NewPost/NewPostContainer.jsx';
-import Post from './Post/Post.jsx';
+import NewPostContainer from './NewPost/NewPostContainer';
+import Post from './Post/Post';
 
 const Posts = React.memo((props) => {
   let postsElements = props.posts.map((el) => <Post key={el.id} message={el.message} />);
