@@ -1,6 +1,13 @@
-let Pagenator = ({currentPage, totalCount, pageSize, onPageChanged}) => {
+type PropsType = {
+	currentPage: number
+	totalCount: number
+	pageSize: number
+	onPageChanged: (pageNubmer: number) => void
+}
+
+let Pagenator: React.FC<PropsType> = ({currentPage, totalCount, pageSize, onPageChanged}) => {
     let pagesCount = Math.ceil(totalCount / pageSize);
-	let pages = [];
+	let pages: Array<number> = [];
 	for (let i = 1; i <= pagesCount; i++) {
 		pages.push(i);
 	}
