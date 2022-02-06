@@ -2,7 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Users from './Users';
-import { follow, unfollow, setCurrentPage, getUsers } from '../../redux/users-reducer';
+import { follow, unfollow, actions, getUsers } from '../../redux/users-reducer';
 import Preloader from './../common/Preloader/Preloader';
 import { compose } from 'redux';
 import { getStateUsers, getStatePageSize, getStateTotalUsersCount, getStateCurrentPage, getStateIsFetching, getStateFollowingInProgress } from '../../redux/users-selectors';
@@ -69,5 +69,5 @@ let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
 }
 
 export default compose(
-  connect<MapStateToPropsType, MapDispatchToPropsType, {}, AppStateType>(mapStateToProps, {follow, unfollow, setCurrentPage, getUsers}),
+  connect<MapStateToPropsType, MapDispatchToPropsType, {}, AppStateType>(mapStateToProps, {follow, unfollow, setCurrentPage: actions.setCurrentPage, getUsers}),
 )(UsersContainer);
