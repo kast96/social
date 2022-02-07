@@ -1,16 +1,10 @@
-import { stopSubmit } from 'redux-form';
-import {authAPI, securityAPI, ResultCodeEnum, ResultCodeForCaptchaEnum} from '../api/api';
+import { stopSubmit } from 'redux-form'
+import { ResultCodeEnum, ResultCodeForCaptchaEnum } from '../api/api'
+import { authAPI } from '../api/auth-api'
+import { securityAPI } from '../api/security-api'
 
 const SET_USER_DATA = 'social/auth/SET-USER-DATA';
 const GET_CAPTCHA_URL_SUCCESS = 'social/auth/GET-CAPTCHA-URL-SUCCESS';
-
-/*export type InitialStateType = {
-    userId: number | null
-    email: string | null
-    login: string | null
-    isAuth: boolean
-    captchaUrl: string | null
-}*/
 
 let initialState = {
     userId: null as number | null,
@@ -83,8 +77,8 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
 }
 
 export const getCaptchaUrl = () => async (dispatch: any) => {
-    const response = await securityAPI.getCaptchaUrl();
-    const captchaUrl = response.data.url;
+    const data = await securityAPI.getCaptchaUrl();
+    const captchaUrl = data.url;
     dispatch(getCaptchaUrlSuccess(captchaUrl));
 }
 
