@@ -1,10 +1,15 @@
-import { reduxForm, Field } from "redux-form";
+import { reduxForm, Field, InjectedFormProps } from "redux-form";
 import { Input, Textarea } from "../../common/FormsControls/FormsControls";
 import { required, maxLenghtCreator } from "../../../utils/validators/validators";
+import { ProfileType } from "../../../types/types";
 
 const maxLenght100 = maxLenghtCreator(100);
 
-const ProfileDataForm = ({handleSubmit, profile, error}) => {
+type ProfileDataFormOwnProps = {
+  profile: ProfileType
+}
+
+const ProfileDataForm: React.FC<InjectedFormProps<ProfileType, ProfileDataFormOwnProps> & ProfileDataFormOwnProps> = ({handleSubmit, profile, error}) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -46,7 +51,7 @@ const ProfileDataForm = ({handleSubmit, profile, error}) => {
   )
 }
 
-const ProfileDataReduxForm = reduxForm({
+const ProfileDataReduxForm = reduxForm<ProfileType, ProfileDataFormOwnProps>({
   form: 'profileData'
 })(ProfileDataForm);
 
