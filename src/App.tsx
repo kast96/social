@@ -7,7 +7,7 @@ import Footer from './components/Footer/Footer';
 import NavBar from './components/NavBar/NavBar';
 import './App.scss';
 import Preloader from './components/common/Preloader/Preloader';
-import store from './redux/redux-store';
+import store, { AppStateType } from './redux/redux-store';
 import {Provider} from 'react-redux';
 import { withSuspense } from './hoc/withSuspense';
 
@@ -16,8 +16,13 @@ const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileCo
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
 const LoginContainer = React.lazy(() => import('./components/Login/LoginContainer'));
 
-class App extends React.Component {
-	catchAllUnhanledError = (reason, promise) => {
+type MapPropsType = ReturnType<typeof mapStateToProps>
+type DispatchPropsType = {
+	initializeApp: () => void
+}
+
+class App extends React.Component<MapPropsType & DispatchPropsType> {
+	catchAllUnhanledError = (e: PromiseRejectionEvent) => {
 		alert('Неизвестная ошибка');
 	}
 
@@ -72,13 +77,13 @@ class App extends React.Component {
 	}
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: AppStateType) => ({
 	initialized: state.app.initialized
 });
 
 const AppContainer = connect(mapStateToProps, {initializeApp})(App);
 
-const SocialApp = (props) => {
+const SocialApp: React.FC = () => {
 	return (
 		<React.StrictMode>
 			<Provider store={store}>
