@@ -2,7 +2,7 @@ import React, { ChangeEvent } from "react";
 
 type PropsType = {
     status: string
-     updateStatus: (status: string) => void
+    updateStatus: (status: string) => void
 }
 
 type StateType = {
