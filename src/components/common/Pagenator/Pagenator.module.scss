@@ -1,0 +1,30 @@
+.pagenator {
+    margin: 20px 0;
+
+    &__item {
+        display: inline-block;
+    }
+
+    &__page {
+        display: inline-block;
+        padding: 10px 15px;
+        margin-right: 5px;
+        font-weight: 600;
+        font-size: 16px;
+        border: none;
+        border-radius: 6;
+        cursor: pointer;
+        background-color: #fff;
+
+        &:global(.is-active) {
+            background-color: #2d8bc0;
+            color: #fff;
+            cursor: default;
+        }
+        
+        &__dots {
+            background-color: #eee;
+            cursor: default;
+        }
+    }
+}

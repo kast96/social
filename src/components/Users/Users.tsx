@@ -17,12 +17,12 @@ type PropsType = {
 let Users: React.FC<PropsType> = ({currentPage, totalUsersCount, pageSize, onPageChanged, users, followingInProgress, follow, unfollow}) => {
 	return (
 		<div className="users">
-			<Pagenator currentPage={currentPage} totalCount={totalUsersCount} pageSize={pageSize} onPageChanged={onPageChanged} />
 			{
 				users.map(user => 
 					<User key={user.id} user={user} followingInProgress={followingInProgress} follow={follow} unfollow={unfollow} />
 				)
 			}
+			<Pagenator currentPage={currentPage} totalCount={totalUsersCount} pageSize={pageSize} onPageChanged={onPageChanged} />
 		</div>
 	)
 }
