@@ -41,8 +41,10 @@ let Pagenator: React.FC<PropsType> = ({currentPage, totalCount, pageSize, onPage
 	if (rightBorder < totalPages - 1) {
 		pages.push('...');
 	}
-
-	pages.push(totalPages);
+	
+	if (totalPages > 1) {
+		pages.push(totalPages);
+	}
 
     return (
         <div className={s.pagenator}>
