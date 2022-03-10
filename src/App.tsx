@@ -13,8 +13,8 @@ import { withSuspense } from './hoc/withSuspense';
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
-const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
-const LoginContainer = React.lazy(() => import('./components/Login/LoginContainer'));
+const UsersPage = React.lazy(() => import('./components/Users/UsersPage'));
+const LoginPage = React.lazy(() => import('./components/Login/LoginPage'));
 
 type MapPropsType = ReturnType<typeof mapStateToProps>
 type DispatchPropsType = {
@@ -58,10 +58,10 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
 										{withSuspense(ProfileContainer)}
 									</Route>
 									<Route path="/users/">
-										{withSuspense(UsersContainer)}
+										{withSuspense(UsersPage)}
 									</Route>
 									<Route path="/login/">
-										{withSuspense(LoginContainer)}
+										{withSuspense(LoginPage)}
 									</Route>
 									<Route path="*">
 										<div>404</div>
