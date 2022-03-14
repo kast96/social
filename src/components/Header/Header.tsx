@@ -14,7 +14,9 @@ const Header: React.FC = () => {
 
   const dispatch = useDispatch()
 
-  const logoutCallback = dispatch(logout)
+  const logoutCallback = () => {
+    dispatch(logout())
+  }
 
   return (
     <Header>
