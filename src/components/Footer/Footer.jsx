@@ -1,10 +1,12 @@
+import { Layout } from 'antd';
+
 const Footer = () => {
-    return (
-      <footer className="footer">
-          footer
-      </footer>
-    );
-  }
+  const { Footer } = Layout;
+
+  return (
+    <Footer style={{ textAlign: 'center' }}>React Social Network © 2021 - {new Date().getFullYear()} Created by <a href={'https://github.com/kast96'} target={'_blank'} rel="noreferrer">kast96</a></Footer>
+  );
+}
   
-  export default Footer;
+export default Footer;
   
