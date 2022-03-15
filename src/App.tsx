@@ -19,6 +19,7 @@ const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsCo
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 const UsersPage = React.lazy(() => import('./components/Users/UsersPage'));
 const LoginPage = React.lazy(() => import('./components/Login/LoginPage'));
+const ChatPage = React.lazy(() => import('./components/pages/Chat/ChatPage'));
 
 type MapPropsType = ReturnType<typeof mapStateToProps>
 type DispatchPropsType = {
@@ -64,9 +65,10 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
 									<SubMenu key="sub1" icon={<UserOutlined />} title="My Profile">
 										<Menu.Item key="1"><Link to="/profile/">Profile</Link></Menu.Item>
 										<Menu.Item key="2"><Link to="/dialogs/">Messages</Link></Menu.Item>
+										<Menu.Item key="3"><Link to="/chat/">Chat</Link></Menu.Item>
 									</SubMenu>
 									<SubMenu key="sub2" icon={<LaptopOutlined />} title="Users">
-										<Menu.Item key="3"><Link to="/users/">Users</Link></Menu.Item>
+										<Menu.Item key="4"><Link to="/users/">Users</Link></Menu.Item>
 									</SubMenu>
 								</Menu>
 							</Sider>
@@ -86,6 +88,9 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
 									</Route>
 									<Route path="/login/">
 										{withSuspense(LoginPage)}
+									</Route>
+									<Route path="/chat/">
+										{withSuspense(ChatPage)}
 									</Route>
 									<Route path="*">
 										<div>404</div>
