@@ -1,7 +1,7 @@
 import userPhoto from "../../../assets/images/user.png";
 
 type PropsType = {
-    photo: string
+    photo: string | null
     alt: string
 }
 
