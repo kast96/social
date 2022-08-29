@@ -45,7 +45,7 @@ export const Users: React.FC = React.memo(() => {
 		}
 
     	dispatch(getUsers(actualPage, pageSize, actualFilter))
-	}, [])
+	}, [currentPage, pageSize, dispatch, filter, history.location.search])
 
 	useEffect(() => {
 		const query: QueryParamsType = {}
