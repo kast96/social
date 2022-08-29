@@ -6,9 +6,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getStateCurrentPage, getStateFilter, getStateFollowingInProgress, getStatePageSize, getStateTotalUsersCount, getStateUsers } from '../../redux/users-selectors'
 import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-import * as quertyString from 'querystring'
+//import * as quertyString from 'querystring'
 
-type QueryParamsType = {term?: string, page?: string, friend?: string}
+//type QueryParamsType = {term?: string, page?: string, friend?: string}
 
 export const Users: React.FC = React.memo(() => {
 	const totalUsersCount = useSelector(getStateTotalUsersCount)
@@ -22,15 +22,17 @@ export const Users: React.FC = React.memo(() => {
 	const history = useHistory()
 
 	useEffect(() => {
-		const search = history.location.search.substring(1)
-		const parsed = quertyString.parse(search) as QueryParamsType
+		//const search = history.location.search.substring(1)
+		const params = new URLSearchParams(history.location.search);
+		//const item = params.get('item');
+		//const parsed = quertyString.parse(search) as QueryParamsType
 		
 		let actualPage = currentPage
 		let actualFilter = filter
 
-		if (!!parsed.page) actualPage = Number(parsed.page)
-		if (!!parsed.term) actualFilter = {...actualFilter, term: parsed.term as string}
-		switch (parsed.friend) {
+		if (!!params.get('page')) actualPage = Number(params.get('page'))
+		if (!!params.get('term')) actualFilter = {...actualFilter, term: params.get('term') as string}
+		switch (params.get('friend')) {
 			case 'null':
 				actualFilter = {...actualFilter, friend: null}
 				break
@@ -45,18 +47,23 @@ export const Users: React.FC = React.memo(() => {
 		}
 
     	dispatch(getUsers(actualPage, pageSize, actualFilter))
-	}, [currentPage, pageSize, dispatch, filter, history.location.search])
+	}, [currentPage, dispatch, filter, history.location.search, pageSize])
 
 	useEffect(() => {
-		const query: QueryParamsType = {}
+		const params = new URLSearchParams()
+		if (!!filter.term) params.set('term', filter.term)
+		if (filter.friend !== null) params.set('friend', String(filter.friend))
+		if (currentPage !== 1) params.set('page', String(currentPage))
+
+		/*const query: QueryParamsType = {}
 		if (!!filter.term) query.term = filter.term
 		if (filter.friend !== null) query.friend = String(filter.friend)
-		if (currentPage !== 1) query.page = String(currentPage)
+		if (currentPage !== 1) query.page = String(currentPage)*/
 
 
 		history.push({
 			pathname: '/users/',
-			search: quertyString.stringify(query)
+			search: params.toString()
 		})
 	}, [history, filter, currentPage])
 
